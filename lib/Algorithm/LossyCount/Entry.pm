@@ -1,7 +1,6 @@
 package Algorithm::LossyCount::Entry;
 
 use v5.14;
-use Smart::Args;
 
 sub new {
   my ($class, %params) = @_;
