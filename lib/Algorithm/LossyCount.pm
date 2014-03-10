@@ -105,3 +105,60 @@ sub num_samples { $_[0]->{num_samples} }
 sub num_samples_in_current_bucket { $_[0]->{num_samples_in_current_bucket} }
 
 1;
+
+=head1 SYNOPSIS
+
+  use strict;
+  use warnings;
+  use Algorithm::LossyCount;
+  
+  my @samples = qw/a b a c d f a a d b b c a a .../;
+  
+  my $counter = Algorithm::LossyCount->new(max_error_ratio => 0.005);
+  $counter->add_sample($_) for @samples;
+  
+  my $frequencies = $counter->frequencies;
+  say $frequencies->{a};  # Approximate freq. of 'a'.
+  say $frequencies->{b};  # Approximate freq. of 'b'.
+  ...
+
+=head1 DESCRIPTION
+
+Lossy-Counting is a approximate frequency counting algorithm proposed by Manku and Motwani in 2002 (refer L<SEE ALSO> section below.)
+
+The main advantage of the algorithm is memory efficiency. You can get approximate count of appearance of items with very low memory footprint, compared with total inspection.
+Furthermore, Lossy-Counting is an online algorithm. It is applicable to data set such that the size is unknown, and you can take intermediate result anytime.
+
+=head1 METHODS
+
+=head2 new(max_error_ratio => $num)
+
+Construcotr. C<max_error_ratio> is the only mandatory parameter, that specifies acceptable error ratio. It is an error that give zero or a negative number as the value.
+
+=head2 add_sample($sample)
+
+Add given C<$sample> to count.
+
+=head2 frequencies([support => $num])
+
+Returns current result as HashRef. Its keys and values are samples and corresponding counts respectively.
+
+If optional named parameter C<support> is specified, returned HashRef will contain only samples having frequency greater than C<($support - $max_error_ratio) * $num_samples>.
+
+=head2 max_error_ratio
+
+Returns C<max_error_ratio> you've given to the constructor.
+
+=head2 num_samples
+
+Returns the total number of samples you've added.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item Manku, Gurmeet Singh, and Rajeev Motwani. "Approximate frequency counts over data streams." Proceedings of the 28th international conference on Very Large Data Bases. VLDB Endowment, 2002.
+
+=back
+
+=cut
