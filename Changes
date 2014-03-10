@@ -1,4 +1,7 @@
 Revision history for Algorithm-LossyCount
 
 {{$NEXT}}
+        - Exclude Emacs backup files.
+
+0.01    2014-03-10
         - Initial release.
