@@ -46,7 +46,7 @@ sub add_sample {
   } else {
     $self->entries->{$sample} = Algorithm::LossyCount::Entry->new(
       num_allowed_errors => $self->current_bucket - 1,
-    )
+    );
   }
 
   ++$self->{num_samples};
