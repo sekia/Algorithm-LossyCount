@@ -1,4 +1,4 @@
-use v5.14;
+use v5.10;
 use List::Util qw/shuffle sum/;
 use Test::Exception::LessClever;
 use Test::More;

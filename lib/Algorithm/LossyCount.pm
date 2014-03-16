@@ -2,7 +2,7 @@ package Algorithm::LossyCount;
 
 # ABSTRACT: Memory-efficient approximate frequency count.
 
-use v5.14;
+use v5.10;
 use Algorithm::LossyCount::Entry;
 use Carp;
 use POSIX qw//;

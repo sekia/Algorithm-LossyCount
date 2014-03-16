@@ -1,6 +1,6 @@
 package Algorithm::LossyCount::Entry;
 
-use v5.14;
+use v5.10;
 
 sub new {
   my ($class, %params) = @_;
