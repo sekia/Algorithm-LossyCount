@@ -1,6 +1,8 @@
 Revision history for Algorithm-LossyCount
 
 {{$NEXT}}
+
+0.03    2014-03-18
         - Relax Perl version requirement from v5.14 to v5.10.
         - Remove unused Smart::Args from dependency.
 
