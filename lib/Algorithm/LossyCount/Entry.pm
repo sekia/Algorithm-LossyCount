@@ -1,5 +1,7 @@
 package Algorithm::LossyCount::Entry;
 
+use strict;
+use warnings;
 use v5.10;
 
 sub new {
