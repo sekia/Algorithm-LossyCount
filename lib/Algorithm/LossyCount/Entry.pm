@@ -13,7 +13,7 @@ sub new {
     Carp::croak(
       'Unknown parameter(s): ',
       join ', ', map { qq/"$_"/ } sort keys %params,
-    )
+    );
   }
 
   bless +{

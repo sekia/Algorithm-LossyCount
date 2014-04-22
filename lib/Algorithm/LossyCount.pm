@@ -20,7 +20,7 @@ sub new {
     Carp::croak(
       'Unknown parameter(s): ',
       join ', ', map { qq/"$_"/ } sort keys %params,
-    )
+    );
   }
 
   Carp::croak('max_error_ratio must be positive.') if $max_error_ratio <= 0;
@@ -89,7 +89,7 @@ sub frequencies {
     Carp::croak(
       'Unknown parameter(s): ',
       join ', ', map { qq/"$_"/ } sort keys %params,
-    )
+    );
   }
 
   my $threshold = ($support - $self->max_error_ratio) * $self->num_samples;
@@ -126,7 +126,7 @@ sub num_samples_in_current_bucket { $_[0]->{num_samples_in_current_bucket} }
 
 =head1 DESCRIPTION
 
-Lossy-Counting is a approximate frequency counting algorithm proposed by Manku and Motwani in 2002 (refer L<SEE ALSO> section below.)
+Lossy-Counting is an approximate frequency counting algorithm proposed by Manku and Motwani in 2002 (refer L<SEE ALSO> section below.)
 
 The main advantage of the algorithm is memory efficiency. You can get approximate count of appearance of items with very low memory footprint, compared with total inspection.
 Furthermore, Lossy-Counting is an online algorithm. It is applicable to data set such that the size is unknown, and you can take intermediate result anytime.
@@ -135,7 +135,7 @@ Furthermore, Lossy-Counting is an online algorithm. It is applicable to data set
 
 =head2 new(max_error_ratio => $num)
 
-Construcotr. C<max_error_ratio> is the only mandatory parameter, that specifies acceptable error ratio. It is an error that give zero or a negative number as the value.
+Constructor. C<max_error_ratio> is the only mandatory parameter, that specifies acceptable error ratio. Giving zero or a negative number as its value is an error.
 
 =head2 add_sample($sample)
 
